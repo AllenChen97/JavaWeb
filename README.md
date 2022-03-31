@@ -15,12 +15,30 @@
 ----------------------
 ## 2. Servlet
 ### 1.1. 启动一个Servlet程序
+Server输出乱码：统一三个地方的encoding method  
+1.tomcat/conf/logging.properties: encoding = UTF-8  
+2.Servlet配置/VM options: -Dfile.encoding=UTF-8  
+3.Help/custom VM option: -Dfile.encoding=UTF-8  
 
 ### 1.2. 生命周期
+Serlet构建方法 --> init --> Service --> Destoried
 
-### 1.3. 请求分发dispatch
+### 1.3. 请求分发和重定向（重要）
+```java
+// '/' 对于浏览器(html)和服务器中会被解析成不同的绝对路径
+// 对于浏览器来说：http://IP:port/
+// 对于服务器来说：http://IP:port/工程路径/
+// 例外：resp.sendRedirect("/Servlet/worker");
+```
+```java
+// 分发：此处写资源路径即可
+RequestDispatcher requestDispatcher = req.getRequestDispatcher("/worker");
+requestDispatcher.forward(req, resp);
 
-### 1.4. Servlet体系
+// 重定向
+resp.sendRedirect("/Servlet/worker");
+```
+### 1.4. Servlet体系（重要）
 
 #### 1.4.1. ServletConfig
 

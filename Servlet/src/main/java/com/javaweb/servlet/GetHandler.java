@@ -28,14 +28,14 @@ public class GetHandler extends HttpServlet {
 
         System.out.println("请求的工程路径：" + req.getRequestURI());
         System.out.println("请求的绝对路径：" + req.getRequestURL());
-        System.out.println("请求的上下文路径：" + req.getContextPath());
-        System.out.println("请求的Servlet路径：" + req.getServletPath());
+        System.out.println("请求的工程路径：" + req.getContextPath());
+        System.out.println("请求的资源路径：" + req.getServletPath());
         System.out.println("日期：" + req.getDateHeader("Date"));
 
         System.out.println("\n<--------------- 二、用户信息 --------------->");
-        System.out.println("请求头：" + req.getHeader("user-agent"));
-        System.out.println("请求头：" + req.getHeader("referer"));
-        System.out.println("请求头：" + req.getHeader("cookie"));
+        System.out.println("请求头user-agent：" + req.getHeader("user-agent"));
+        System.out.println("请求头referer：" + req.getHeader("referer"));
+        System.out.println("请求头cookie：" + req.getHeader("cookie"));
 
         System.out.println(req.getScheme());
         System.out.println("用户端：" + req.getRemoteUser());
