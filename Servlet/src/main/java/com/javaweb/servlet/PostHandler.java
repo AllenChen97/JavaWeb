@@ -33,7 +33,7 @@ public class PostHandler extends HttpServlet {
         System.out.println("请求的站内路径：" + req.getRequestURI());
         System.out.println("请求的站外全路径：" + req.getRequestURL());
         System.out.println("请求的工程路径：" + req.getContextPath());
-        System.out.println("请求的Servlet路径：" + req.getServletPath());
+        System.out.println("请求的资源路径：" + req.getServletPath());
 //        System.out.println("日期：" + req.getDateHeader());
 
         System.out.println("\n<--------------- 二、用户信息 --------------->");

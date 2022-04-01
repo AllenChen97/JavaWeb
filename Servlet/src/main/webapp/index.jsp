@@ -60,14 +60,23 @@
             <input type="submit" value="Submit">
         </form>
         <br><br>
-        <a href="cookie-add">3. 增加cookie:{key2:value2}</a>
-<%--        <a href="/cookie-add?action=doGet">增加cookie:{key2:value2}</a>--%>
+
+        <a href="cookie-add"><button>3. 增加cookie:{key2:value2}</button></a>
+        <%--    "/Servlet/cookie-add?action=doGet"    --%>
         <br><br>
 
         <button onclick="ajax()"> 4. ajax获取服务器返回的对象</button>
 
         <div id="response1">
         </div>
+
+        <a href="http://localhost:8080/Servlet/dispatch">
+            <button>5. 请求分发</button>
+        </a>
+        <br>
+        <a href="http://localhost:8080/Servlet/redirect">
+            <button>6. 重定向</button>
+        </a>
 
     </body>
 </html>

@@ -29,11 +29,12 @@
                 console.log("请求阶段: " + request.readyState)
                 console.log("状态: " + request.status)
                 console.log("返回消息: " + request.responseText)
-                if(request.readyState==4 && request.status==200){
-                    // request.responseXML;
 
+                // 改变页面内容
+                if(request.readyState && request.status==200){
+                    // request.responseXML;
                     const obj = JSON.parse(request.responseText);
-                    document.getElementById("response1").innerText = "id: " + obj.id + ", name:" + obj.name;
+                    document.getElementById("response1").innerText = "{id: " + obj.id + ",name:" + obj.name + "}";
                 }
             }
             // 4.发送请求
@@ -67,6 +68,14 @@
 
         <div id="response1">
         </div>
+
+        <a href="http://localhost:8080/Servlet/dispatch">
+            <button>5. 请求分发</button>
+        </a>
+        <br>
+        <a href="http://localhost:8080/Servlet/redirect">
+            <button>6. 重定向</button>
+        </a>
 
     </body>
 </html>
