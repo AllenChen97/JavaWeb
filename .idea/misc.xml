@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/Tomcat/pom.xml" />
         <option value="$PROJECT_DIR$/Servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring/pom.xml" />
       </list>
     </option>
   </component>
