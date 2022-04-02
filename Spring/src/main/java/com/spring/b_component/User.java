@@ -1,4 +1,4 @@
-package com.spring.component;
+package com.spring.b_component;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -23,7 +23,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "com.spring.intro.Person{" +
                 "name='" + name + '\'' +
                 '}';
     }

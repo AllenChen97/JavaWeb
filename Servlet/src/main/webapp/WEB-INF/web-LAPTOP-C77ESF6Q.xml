@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!--  Servlet  -->
+    <servlet>
+        <!--    别名    -->
+        <servlet-name>GetHandler</servlet-name>
+        <!--    全类名    -->
+        <servlet-class>com.javaweb.servlet.GetHandler</servlet-class>
+    </servlet>
+    <!--给Servlet程序配置访问地址-->
+    <servlet-mapping>
+        <!--    我当前配置是给哪个Servlet程序使用的    -->
+        <servlet-name>GetHandler</servlet-name>
+        <!--    http://ip:port/工程路径/hello    -->
+        <url-pattern>/get</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PostHandler</servlet-name>
+        <servlet-class>com.javaweb.servlet.PostHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PostHandler</servlet-name>
+        <url-pattern>/post</url-pattern>
+    </servlet-mapping>
+
+
+    <!--  Cookie & Session & Ajax -->
+    <servlet>
+        <servlet-name>CookieServlet</servlet-name>
+        <servlet-class>com.javaweb.servlet.CookieServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieServlet</servlet-name>
+        <url-pattern>/cookie</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionServlet</servlet-name>
+        <servlet-class>com.javaweb.servlet.SessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionServlet</servlet-name>
+        <url-pattern>/session</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Json</servlet-name>
+        <servlet-class>com.javaweb.servlet.Json</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Json</servlet-name>
+        <url-pattern>/json</url-pattern>
+    </servlet-mapping>
+
+    <!--  分发和重定向  -->
+    <servlet>
+        <servlet-name>Dispatcher</servlet-name>
+        <servlet-class>com.javaweb.分发和重定向.Dispatcher</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Dispatcher</servlet-name>
+        <url-pattern>/dispatch</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Redirecter</servlet-name>
+        <servlet-class>com.javaweb.分发和重定向.Redirecter</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Redirecter</servlet-name>
+        <url-pattern>/redirect</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Worker</servlet-name>
+        <servlet-class>com.javaweb.分发和重定向.Worker</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Worker</servlet-name>
+        <url-pattern>/worker</url-pattern>
+    </servlet-mapping>
+
+
+    <!--配置初始化参数-->
+    <context-param>
+        <param-name>key1</param-name>
+        <param-value>value1</param-value>
+    </context-param>
+
+
+    <!--    全部会话的时长改为20分钟，Tomcat默认30分钟    -->
+    <session-config>
+        <session-timeout>20</session-timeout>
+    </session-config>
+</web-app>

@@ -1,5 +1,5 @@
-import com.spring.component.User;
-import com.spring.config.Configuration;
+import com.spring.b_component.User;
+import com.spring.c_config.Configuration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ConfigTest {

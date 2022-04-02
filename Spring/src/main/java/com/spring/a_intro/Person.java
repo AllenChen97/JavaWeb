@@ -1,4 +1,5 @@
-import org.springframework.stereotype.Component;
+package com.spring.a_intro;
+
 public class Person {
     String name;
 
@@ -17,7 +18,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "com.spring.intro.Person{" +
                 "name='" + name + '\'' +
                 '}';
     }

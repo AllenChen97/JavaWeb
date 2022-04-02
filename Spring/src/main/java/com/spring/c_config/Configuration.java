@@ -1,11 +1,10 @@
-package com.spring.config;
-import com.spring.component.User;
+package com.spring.c_config;
+import com.spring.b_component.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
 
 @org.springframework.context.annotation.Configuration
-@ComponentScan("com.spring.component")
+@ComponentScan("com.spring.b_component")
 //@Import("Configuration.class")
 public class Configuration {
 

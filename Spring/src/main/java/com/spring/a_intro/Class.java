@@ -1,3 +1,5 @@
+package com.spring.a_intro;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -64,7 +66,7 @@ public class Class {
 
     @Override
     public String toString() {
-        return "Class{" +
+        return "com.spring.intro.Class{" +
                 "name='" + name + '\'' +
                 ", numberofStudent=" + numberofStudent +
                 ", list=" + list +
