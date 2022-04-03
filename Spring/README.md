@@ -44,7 +44,7 @@ DI只是实现IOC的一种方式，还有其他很多方法
 <import resource="beans.xml"></import>
 ```
 
-## 3.Dependencies Injection依赖注入
+## 3.Dependencies Injection依赖注入（熟练）
 ### 3.1.注入方式
 #### 3.1.1.构造器注入
 - 见 2.2
@@ -118,7 +118,7 @@ public class Class {
 }
 ```
 
-## 4. Annotation 注释开发 半脱离xml
+## 4. Annotation 注释开发 半脱离xml（掌握）
 ### 4.1. @Component + @Value
 - @Component表示该类被Spring托管
 - 复杂的还是建议走xml
