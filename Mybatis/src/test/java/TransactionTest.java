@@ -1,11 +1,10 @@
 import com.mybatis.mapper.BusMapper;
-import com.mybatis.mapper.BusMapperImpl;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 
-public class SpringTest {
+public class TransactionTest {
     @Test
     public void test() throws IOException {
         // 1.读取配置，根据配置生成dataSource --> sqlSessionFactory
@@ -14,11 +13,8 @@ public class SpringTest {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         // 2.用Bean 获取Mapper
-//        BusMapperImpl busMapperImpl = context.getBean("busMapper", BusMapperImpl.class);
-
-        //方法二：
         BusMapper busMapper = context.getBean("busMapper2", BusMapper.class);
 
-        System.out.println(busMapper.selectBus());
+        busMapper.test();
     }
 }
