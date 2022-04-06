@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--    namespace命名空间：用于识别SQL   -->
+<mapper namespace="com.dao.mapper.BusMapper">
+
+    <resultMap id="custMap" type="com.dao.PO.Route">
+        <id column="type" property="rtype"/>
+        <id column="length" property="rlength"/>
+        <id column="description" property="rdescription"/>
+    </resultMap>
+
+    <!--  利用反射将查询出来的属性放入新建的对象，并逐个放入List  -->
+    <select id="selectBus" resultType="com.dao.POJO.Bus">
+        select * from c0094835.Bus
+    </select>
+
+    <insert id="insertBus" parameterType="com.dao.POJO.Bus">
+        inserts into c0094835.Bus (type, length, description)
+        values (#{type}, #{length}, #{description})
+    </insert>
+
+    <delete id="deleteBus"  parameterType="String">
+        delete from c0094835.Bus where type=#{type}
+    </delete>
+
+    <update id="updateBus"  parameterType="com.dao.POJO.Bus">
+        update c0094835.Bus set length=#{length} where type=#{type}
+    </update>
+</mapper>
+

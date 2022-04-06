@@ -1,6 +1,6 @@
-package com.mybatis.mapper;
+package com.dao.mapper;
 
-import com.mybatis.beginner.Bus;
+import com.dao.POJO.Bus;
 
 import java.util.List;
 

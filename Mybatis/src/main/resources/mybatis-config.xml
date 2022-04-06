@@ -2,22 +2,38 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
+
+    <properties resource="jdbc.properties"/>
+
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.dao.POJO.Bus" alias="bus"/>
+        <!--    整个包所有类的类名，不区分大小写    -->
+        <package name="com.dao.POJO"/>
+    </typeAliases>
+
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://cs-db.ncl.ac.uk:3306"/>
-                <property name="username" value="c0094835"/>
-                <property name="password" value="541236987s"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
 
     <!--  记得注册mappers  -->
     <mappers>
-        <mapper class="com.mybatis.mapper.BusMapper"/>
+<!--        <mapper class="com.dao.mapper.BusMapper.xml"/>-->
+        <package name="com.dao.mapper"/>
     </mappers>
 
 </configuration>

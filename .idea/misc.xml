@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/Servlet/pom.xml" />
         <option value="$PROJECT_DIR$/Spring/pom.xml" />
         <option value="$PROJECT_DIR$/Spring-boot/pom.xml" />
+        <option value="$PROJECT_DIR$/Mybatis/pom.xml" />
       </list>
     </option>
   </component>

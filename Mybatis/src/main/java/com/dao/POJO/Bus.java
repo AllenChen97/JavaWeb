@@ -1,4 +1,4 @@
-package com.mybatis.beginner;
+package com.dao.POJO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

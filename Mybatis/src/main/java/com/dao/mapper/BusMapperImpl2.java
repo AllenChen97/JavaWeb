@@ -1,11 +1,11 @@
-package com.mybatis.mapper;
+package com.dao.mapper;
 
-import com.mybatis.beginner.Bus;
+import com.dao.POJO.Bus;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import java.util.List;
 
-public class BusDaoImpl extends SqlSessionDaoSupport implements BusMapper {
+public class BusMapperImpl2 extends SqlSessionDaoSupport implements BusMapper {
     // 方法二：继承SqlSessionDaoSupport后
     //      用getSqlSession 获取 SqlSessionTemplate
     //      直接.getMapper()获取mapper来进行操作

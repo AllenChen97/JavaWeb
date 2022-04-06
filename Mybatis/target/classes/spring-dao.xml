@@ -10,7 +10,6 @@
        http://www.springframework.org/schema/tx
        https://www.springframework.org/schema/tx/spring-tx.xsd">
 
-
     <!--  DataSource:使用Spring的数据源替换Mybatis的配置  -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -19,19 +18,20 @@
         <property name="password" value="541236987s"/>
     </bean>
 
-
     <!--  sqlSessionFactory  -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!--    绑定mybatis配置文件：可选    -->
 <!--        <property name="configLocation" value="classpath:mybatis-config.xml"/>-->
-        <property name="mapperLocations" value="classpath:com/mybatis/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath*:com/dao/mapper/*.xml"/>
     </bean>
 
     <!--  创建sqlSessionTemplate，就是Mybatis原版用的sqlSession  -->
+    <!--  SqlSessionTemplate是线程安全可以被多个DAO共享使用   -->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
+
 
     <!--  配置事务管理  -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -53,7 +53,7 @@
 
     <!--  配置事务切入  -->
     <aop:config>
-        <aop:pointcut id="txPointCut" expression="execution(* com.mybatis.mapper.*.*(..))"/>
+        <aop:pointcut id="txPointCut" expression="execution(* com.dao.mapper.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
     </aop:config>
 
