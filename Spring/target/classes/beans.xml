@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--  无参构造，再给属性赋值，默认  -->
+    <bean id="student-Contructed1" class="com.spring.a_Intro.Person">
+        <property name="name" value="HelloSpring1"/>
+    </bean>
+
+    <!--    有参构造    -->
+    <!--    按顺序    -->
+    <bean id="student-Contructed2" class="com.spring.a_Intro.Person">
+        <constructor-arg index="0" value="HelloSpring2"/>
+    </bean>
+
+    <!--    按顺序    -->
+    <bean id="student-Contructed3" class="com.spring.a_Intro.Person">
+        <constructor-arg name="name" value="HelloSpring3"/>
+    </bean>
+
+    <!--    按字段名    -->
+    <bean id="student-Contructed4" class="com.spring.a_Intro.Person">
+        <constructor-arg type="java.lang.String" value="HelloSpring4"/>
+    </bean>
+
+    <alias name="student-Contructed1" alias="hahaha"/>
+
+    <import resource="beans2.xml"/>
+
+    <!--  复杂类型装配  -->
+    <bean id="class-complexvalue" class="com.spring.a_Intro.Class">
+        <!--    普通value注入    -->
+        <property name="name" value="高三1班"/>
+        <property name="numberofStudent" value="33"/>
+
+        <!--    Bean注入    -->
+        <property name="student" ref="hahaha"/>
+
+        <!--    list列表/array数组    -->
+        <property name="list">
+            <list>
+                <value>aa</value>
+                <value>bb</value>
+                <value>cc</value>
+            </list>
+        </property>
+
+        <!--    map注入    -->
+        <property name="map">
+            <map>
+                <entry key="aa" value="12345"></entry>
+                <entry key="bb" value="1234"></entry>
+                <entry key="cc" value="123"></entry>
+            </map>
+        </property>
+
+        <!--    set注入    -->
+        <property name="set">
+            <set>
+                <value>12345</value>
+                <value>123</value>
+                <value>12345</value>
+            </set>
+        </property>
+
+        <!--    null注入    -->
+        <property name="nu">
+            <null/>
+        </property>
+
+        <!--    Properties注入    -->
+        <property name="properties">
+            <props>
+                <prop key="aa">123456</prop>
+                <prop key="bb">12345</prop>
+                <prop key="cc">1234</prop>
+            </props>
+        </property>
+
+    </bean>
+
+</beans>

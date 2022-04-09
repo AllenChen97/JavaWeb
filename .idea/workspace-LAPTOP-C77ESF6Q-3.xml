@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Servlet:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dd3a2101-0a72-4a2b-9993-ffde03a38d95" name="Changes" comment="Mybatis Third Day">
+      <change beforePath="$PROJECT_DIR$/Servlet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Servlet/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-boot/NOTE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-boot/NOTE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/NOTE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/NOTE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/a_intro/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/a_Intro/Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/a_intro/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/a_Intro/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/b_component/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/b_Annotation/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/c_config/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/c_Config/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/d_proxy/Host.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/d_Proxy/Host.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/d_proxy/ProxyInvocationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/d_Proxy/ProxyInvocationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/d_proxy/Rent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/d_Proxy/Rent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_aop/AfterLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_AOP/AfterLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_aop/AnnotationPointCut.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_AOP/AnnotationPointCut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_aop/BeforeLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_AOP/BeforeLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_aop/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_AOP/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_aop/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/java/com/spring/e_AOP/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/resources/annotation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/resources/annotation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/resources/aop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/resources/aop.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/resources/beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/resources/beans.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/main/resources/p_c_namespace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/main/resources/p_c_namespace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/test/java/Annotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/test/java/Annotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/test/java/AopTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/test/java/AopTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/test/java/BasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/test/java/a_BasicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/test/java/ConfigTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/test/java/ConfigTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/src/test/java/ProxyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/src/test/java/ProxyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/target/test-classes/BasicTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/target/test-classes/BasicTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tomcat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Tomcat/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="spring-beans.schema" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="271EMfDKcYVh0VgEtnbL91qEvmi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Mybatis" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\c0094835\OneDrive - Newcastle University\Files\1_Code\Javaweb\Spring\Mybatis\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\c0094835\OneDrive - Newcastle University\Files\1_Code\Javaweb" />
+      <recent name="C:\Users\c0094835\OneDrive - Newcastle University\Files\1_Code\Javaweb\Servlet\src\main\webapp\lib" />
+      <recent name="E:\文件储存\OneDrive - Newcastle University\Files\1_Code\Javaweb\Tomcat\src\main\webapp" />
+      <recent name="C:\Users\c0094835\OneDrive - Newcastle University\Files\Javaweb\Tomcat\web" />
+      <recent name="C:\Users\c0094835\OneDrive - Newcastle University\Files\Javaweb\Tomcat\WEB-INF" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="com.spring.e_aop" />
+      <recent name="com.spring.component" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.a_BasicTest">
+    <configuration name="a_BasicTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="a_BasicTest" />
+      <module name="Spring" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MybatisTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mybatis" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MybatisTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MybatisTest.MybatisBasic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mybatis" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MybatisTest" />
+      <option name="METHOD_NAME" value="MybatisBasic" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MybatisTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mybatis" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MybatisTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mybatis" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SpringTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="hello" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Spring-boot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.springboot.Hello" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Servlet" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.77" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
+      <deployment>
+        <artifact name="Servlet:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Servlet" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="2f78f8cb-9557-4071-a037-197a1d68582a" />
+        <option name="JNDI_PORT" value="1010" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49457" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Servlet:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.77" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Tomcat" />
+      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
+      <deployment>
+        <artifact name="Tomcat:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Tomcat" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="e81cc960-380d-40cd-a49e-6b2b9cff5855" />
+        <option name="JNDI_PORT" value="1010" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49457" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Tomcat:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.SpringTest.test" />
+      <item itemvalue="JUnit.MybatisTest.test" />
+      <item itemvalue="JUnit.MybatisTest" />
+      <item itemvalue="JUnit.MybatisTest.MybatisBasic" />
+      <item itemvalue="Spring Boot.hello" />
+      <item itemvalue="Tomcat Server.Tomcat" />
+      <item itemvalue="Tomcat Server.Servlet" />
+      <item itemvalue="Application.a_BasicTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.a_BasicTest" />
+        <item itemvalue="JUnit.MybatisTest.MybatisBasic" />
+        <item itemvalue="JUnit.MybatisTest" />
+        <item itemvalue="JUnit.MybatisTest.test" />
+        <item itemvalue="JUnit.SpringTest.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dd3a2101-0a72-4a2b-9993-ffde03a38d95" name="Changes" comment="" />
+      <created>1648479155315</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648479155315</updated>
+      <workItem from="1648479159040" duration="3680000" />
+      <workItem from="1648502055796" duration="1390000" />
+      <workItem from="1648503658173" duration="126000" />
+      <workItem from="1648503831964" duration="2548000" />
+      <workItem from="1648557264829" duration="309000" />
+      <workItem from="1648563673983" duration="867000" />
+      <workItem from="1648567518322" duration="1076000" />
+      <workItem from="1648586025636" duration="795000" />
+      <workItem from="1648590287344" duration="3461000" />
+      <workItem from="1648635231468" duration="1691000" />
+      <workItem from="1648675177686" duration="5124000" />
+      <workItem from="1648719730297" duration="3394000" />
+      <workItem from="1648731516973" duration="13853000" />
+      <workItem from="1648757418204" duration="1961000" />
+      <workItem from="1648815401755" duration="8000000" />
+      <workItem from="1648837015095" duration="9593000" />
+      <workItem from="1648909303375" duration="5496000" />
+      <workItem from="1648930604489" duration="20972000" />
+      <workItem from="1649003819691" duration="20000" />
+      <workItem from="1649012146914" duration="3299000" />
+      <workItem from="1649075100714" duration="2720000" />
+      <workItem from="1649079612798" duration="400000" />
+      <workItem from="1649080268566" duration="1100000" />
+      <workItem from="1649081777127" duration="14721000" />
+      <workItem from="1649153946351" duration="296000" />
+      <workItem from="1649154959961" duration="50000" />
+      <workItem from="1649155130730" duration="3038000" />
+      <workItem from="1649190994710" duration="3175000" />
+      <workItem from="1649251815437" duration="9867000" />
+      <workItem from="1649266327395" duration="1964000" />
+      <workItem from="1649278110833" duration="5491000" />
+    </task>
+    <task id="LOCAL-00001" summary="Servlet learning">
+      <created>1648759241348</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648759241348</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Spring first day">
+      <created>1648846817745</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648846817745</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Spring first day">
+      <created>1648846886070</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1648846886070</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Spring second day">
+      <created>1648933697636</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1648933697636</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Mybatis">
+      <created>1649015499197</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649015499197</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Spring-boot First Day">
+      <created>1649081097524</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649081097524</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Spring-boot First Day">
+      <created>1649108560163</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649108560163</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Spring-boot First Day">
+      <created>1649108601087</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649108601087</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Mybatis Third Day">
+      <created>1649260513988</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649260513988</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Servlet learning" />
+    <MESSAGE value="Spring first day" />
+    <MESSAGE value="Spring second day" />
+    <MESSAGE value="Mybatis" />
+    <MESSAGE value="Spring-boot First Day" />
+    <MESSAGE value="Mybatis Third Day" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mybatis Third Day" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar!/javax/servlet/http/HttpServletRequest.class</url>
+          <line>26</line>
+          <properties class="javax.servlet.http.HttpServletRequest" method="getDateHeader">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,71 @@
+#Person:
+#  name: Allen
+#  pet:
+#    name: Yoyo
+#  age: 18
+
+
+
+spring:
+#  1.Web场景
+  mvc:
+    #  static-path-pattern加了之后，访问 http://ip:port/res/ 的都是对静态资源的访问
+    #  即使handler就不会拦截到该请求
+    static-path-pattern: /res/**
+
+    #  static-locations加了之后，只有/haha 文件夹下面的静态资源能访问
+    #  可以在列表配置中多个
+  resources:
+    static-locations: [classpath:/haha]
+
+    #  如果改成false所有静态资源都访问不了
+    add-mappings: true
+
+
+#  2.数据场景
+  datasource:
+    url: jdbc:mysql://cs-db.ncl.ac.uk:3306
+    username: c0094835
+    password: 541236987s
+
+    filters: stat,wall
+    max-active: 10
+
+    druid:
+      filters: stat,wall
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: 541236987s
+        reset-enable: false
+
+      web-stat-filter:
+        enabled: true
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+        url-pattern: /*
+
+
+      aop-patterns: com.springboot.*
+
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+        wall:
+          enabled: true
+          config:
+            delete-allow: false # 防火墙：不允许撒谎才能胡操作
+
+
+  # 还可以配置查询相关的配置，例如下面查询超时
+#  jdbc:
+#    template:
+#      query-timeout: 1000
+
+# Mybatis配置
+mybatis:
+#  config-location: classpath:Mybatis/mybatis-config.xml
+  mapper-locations: classpath:Mybatis/mapper/*.xml
+#  所有的配置都在configuration里面，跟上面config-location 只能存在一个，否则报错
+  configuration:
+    map-underscore-to-camel-case: true

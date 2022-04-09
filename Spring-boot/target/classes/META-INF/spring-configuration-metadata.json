@@ -1,0 +1,43 @@
+{
+  "groups": [
+    {
+      "name": "person",
+      "type": "com.springboot.bean.Person",
+      "sourceType": "com.springboot.bean.Person"
+    },
+    {
+      "name": "pet",
+      "type": "com.springboot.bean.Pet",
+      "sourceType": "com.springboot.bean.Pet"
+    },
+    {
+      "name": "spring.datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.springboot.controller.DataSourceConfig",
+      "sourceMethod": "dataSource()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "person.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.springboot.bean.Person"
+    },
+    {
+      "name": "person.name",
+      "type": "java.lang.String",
+      "sourceType": "com.springboot.bean.Person"
+    },
+    {
+      "name": "person.pet",
+      "type": "com.springboot.bean.Pet",
+      "sourceType": "com.springboot.bean.Person"
+    },
+    {
+      "name": "pet.name",
+      "type": "java.lang.String",
+      "sourceType": "com.springboot.bean.Pet"
+    }
+  ],
+  "hints": []
+}
