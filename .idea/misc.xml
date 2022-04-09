@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Servlet" />
+    <file type="web" url="file://$PROJECT_DIR$/Springtest" />
     <file type="web" url="file://$PROJECT_DIR$/Tomcat" />
   </component>
   <component name="MavenProjectsManager">
@@ -14,6 +15,7 @@
         <option value="$PROJECT_DIR$/Spring/pom.xml" />
         <option value="$PROJECT_DIR$/Spring-boot/pom.xml" />
         <option value="$PROJECT_DIR$/Mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring/Springtest/pom.xml" />
       </list>
     </option>
   </component>

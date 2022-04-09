@@ -1,6 +1,6 @@
-import com.spring.d_proxy.Host;
-import com.spring.d_proxy.ProxyInvocationHandler;
-import com.spring.d_proxy.Rent;
+import com.spring.d_Proxy.Host;
+import com.spring.d_Proxy.ProxyInvocationHandler;
+import com.spring.d_Proxy.Rent;
 
 public class ProxyTest {
     public static void main(String[] args) {

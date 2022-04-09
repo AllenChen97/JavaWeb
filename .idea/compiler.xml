@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Servlet" />
         <module name="Tomcat" />
+        <module name="Spring" />
         <module name="Mybatis" />
         <module name="Spring-boot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Javaweb" target="1.7" />
+      <module name="Springtest" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

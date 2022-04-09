@@ -1,6 +1,8 @@
 package com.springboot.bean;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
+@ConfigurationProperties(prefix = "person")
 public class Person {
     private String name;
     private Pet pet;

@@ -43,10 +43,10 @@ public interface UserMapper {
 ```xml
 <!--    namespace命名空间：用于识别SQL   -->
 <mapper namespace="com.dao.mapper.BusMapper">
-    <!--  利用反射将查询出来的属性放入新建的对象，并逐个放入List  -->
-    <select id="selectBus" resultType="com.dao.POJO.Bus">
-        select * from c0094835.Bus;
-    </select>
+  <!--  利用反射将查询出来的属性放入新建的对象，并逐个放入List  -->
+  <select id="selectBus" resultType="com.dao.POJO.Bus">
+    select * from c0094835.Bus;
+  </select>
 </mapper>
 ```
 
@@ -55,7 +55,7 @@ public interface UserMapper {
 ```xml
 
 <mappers>
-    <mapper class="com.dao.mapper.BusMapper"/>
+  <mapper class="com.dao.mapper.BusMapper"/>
 </mappers>
 ```
 
@@ -176,7 +176,7 @@ public class BusMapperImpl2 extends SqlSessionDaoSupport implements BusMapper {
 ```xml
 
 <bean id="busMapper2" class="com.dao.mapper.BusMapperImpl2">
-    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 </bean>
 ```
 
@@ -220,7 +220,7 @@ public class SpringTest {
 ```xml
 <!--  给数据源下，配置一个 事务管理transactionManager  -->
 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    <property name="dataSource" ref="dataSource"/>
+  <property name="dataSource" ref="dataSource"/>
 </bean>
 
         <!--  配置事务通知  -->
@@ -228,17 +228,17 @@ public class SpringTest {
 <!--  给指定方法配置事务管理  -->
 <!--  并指定传播特性propagation  -->
 <tx:attributes>
-    <!--            <tx:method name="selectBus"/>-->
-    <!--            <tx:method name="insertBus"/>-->
-    <!--            <tx:method name="deleteBus"/>-->
-    <!--            <tx:method name="updateBus"/>-->
-    <tx:method name="*" propagation="REQUIRED"/>
+  <!--            <tx:method name="selectBus"/>-->
+  <!--            <tx:method name="insertBus"/>-->
+  <!--            <tx:method name="deleteBus"/>-->
+  <!--            <tx:method name="updateBus"/>-->
+  <tx:method name="*" propagation="REQUIRED"/>
 </tx:attributes>
 </tx:advice>
 
         <!--  指定事务通知 切入到哪些mapper的执行当中  -->
 <aop:config>
-<aop:pointcut id="txPointCut" expression="execution(* com.dao.mapper.*.*(..))"/>
+<aop:pointcut id="txPointCut" expression="execution(* com.springboot.mapper.*.*(..))"/>
 <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
 </aop:config>
 ```
@@ -310,6 +310,7 @@ public class SpringTest {
 
 ## 2. Mybatis主配置
 ### 2.1. [dataSource配置和日志](https://mybatis.org/mybatis-3/zh/configuration.html#properties)
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
@@ -317,27 +318,27 @@ public class SpringTest {
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-    <settings>
-      <setting name="logImpl" value="STDOUT_LOGGING"/>
-    </settings>
-  
-    <environments default="development">
-      <!-- 环境可以配置多个，例如开发环境和生产环境，切换时更改上面default值 -->
-      <environment id="development">
-            <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://cs-db.ncl.ac.uk:3306"/>
-                <property name="username" value="c0094835"/>
-                <property name="password" value="541236987s"/>
-            </dataSource>
-        </environment>
-    </environments>
+  <settings>
+    <setting name="logImpl" value="STDOUT_LOGGING"/>
+  </settings>
 
-    <!--  记得注册mappers  -->
-    <mappers>
-        <mapper class="com.dao.mapper.BusMapper"/>
-    </mappers>
+  <environments default="development">
+    <!-- 环境可以配置多个，例如开发环境和生产环境，切换时更改上面default值 -->
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://cs-db.ncl.ac.uk:3306"/>
+        <property name="username" value="c0094835"/>
+        <property name="password" value="541236987s"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <!--  记得注册mappers  -->
+  <mappers>
+    <mapper class="com.dao.mapper.BusMapper"/>
+  </mappers>
 
 </configuration>
 ```
@@ -399,14 +400,16 @@ public class SpringTest {
 #### 4.1.2. resultMap
 - 如果用自定义的PO对象存储查询结果，可以用此功能给指定的属性赋值
 - 相对于在SQL里面 select xx as 更标准化
-```xml
-    <resultMap id="custMap" type="com.dao.PO.Route">
-        <id column="type" property="rtype"/>
-        <id column="length" property="rlength"/>
-        <id column="description" property="rdescription"/>
-    </resultMap>
 
-    <!--    在slect标签里面 定义resultMap=“custMap” -->
+```xml
+
+<resultMap id="custMap" type="com.springboot.com.dao.PO.Route">
+  <id column="type" property="rtype"/>
+  <id column="length" property="rlength"/>
+  <id column="description" property="rdescription"/>
+</resultMap>
+
+        <!--    在slect标签里面 定义resultMap=“custMap” -->
 ```
 
 ### 4.2. 使用代理方式getMapper(接口.class)
@@ -419,74 +422,80 @@ public class SpringTest {
 - selectOne
 - selectList
 - 模糊搜索
+
 ```xml
     <!--    传入"xxx%"    -->
-    <select id="selectBus" resultType="com.dao.POJO.Bus">
-        select * from c0094835.Bus where type like #{typeLike};
-    </select>
+<select id="selectBus" resultType="com.dao.POJO.Bus">
+  select * from c0094835.Bus where type like #{typeLike};
+</select>
 ```
+
 ```xml
     <!--    传入"xxx" -->
-    <select id="selectBus" resultType="com.dao.POJO.Bus">
-        select * from c0094835.Bus where type like "%" #{typeLike} "%"
-    </select>
+<select id="selectBus" resultType="com.dao.POJO.Bus">
+  select * from c0094835.Bus where type like "%" #{typeLike} "%"
+</select>
 ```
 ### 4.4. 动态SQL
 #### 4.4.1. if 和 where
 - 方法一
+
 ```xml
     <!-- -->
-    <select id="selectBus" resultType="com.dao.POJO.Bus">
-        select * from c0094835.Bus where type = "" 
-        <if length="length > 0">
-            or length &lt;= #{length}
-        </if>
+<select id="selectBus" resultType="com.dao.POJO.Bus">
+  select * from c0094835.Bus where type = ""
+  <if length="length > 0">
+    or length &lt;= #{length}
+  </if>
 
-        <if type="type != null and type != '' ">
-            or type = #{type}
-        </if>
-    </select>
+  <if type="type != null and type != '' ">
+    or type = #{type}
+  </if>
+</select>
 ```
 - 方法二
+
 ```xml
     <!-- -->
-    <select id="selectBus" resultType="com.dao.POJO.Bus">
-        select * from c0094835.Bus
-        <where>
-            <if length="length > 0">
-              or length &lt;= #{length}
-            </if>
-  
-            <if type="type != null and type != '' ">
-              or type = #{type}
-            </if>
-        </where>
-    </select>
+<select id="selectBus" resultType="com.dao.POJO.Bus">
+  select * from c0094835.Bus
+  <where>
+    <if length="length > 0">
+      or length &lt;= #{length}
+    </if>
+
+    <if type="type != null and type != '' ">
+      or type = #{type}
+    </if>
+  </where>
+</select>
 ```
 #### 4.4.2. foreach
 
 ```xml
     <!-- -->
-    <select id="selectBus" resultType="com.dao.POJO.Bus">
-        select * from c0094835.Bus
-        <where>
-            <if type="list.length!=0">
-              <foreach collection="list" start="(" close=")" seperator="," item="List">
-                #{type}
-              </foreach>
-            </if>
-        </where>
-    </select>
+<select id="selectBus" resultType="com.dao.POJO.Bus">
+  select * from c0094835.Bus
+  <where>
+    <if type="list.length!=0">
+      <foreach collection="list" start="(" close=")" seperator="," item="List">
+        #{type}
+      </foreach>
+    </if>
+  </where>
+</select>
 ```
 ### 4.5. 代码片段服用
-```xml
-    <sql id="selectBus">
-        select * from bus
-    </sql>
 
-    <select id="selectBus" resultType="com.dao.POJO.Bus">
-        <include refid="selectBus"/>
-    </select>
+```xml
+
+<sql id="selectBus">
+  select * from bus
+</sql>
+
+<select id="selectBus" resultType="com.dao.POJO.Bus">
+<include refid="selectBus"/>
+</select>
 ```
 
 ### 4.x. 给POJO起别名
@@ -495,9 +504,9 @@ public class SpringTest {
 ```xml
 
 <typeAliases>
-    <typeAlias type="com.dao.POJO.Bus" alias="bus"/>
-    <!--    整个包所有类的类名，不区分大小写    -->
-    <package name="com.dao.POJO"/>
+  <typeAlias type="com.dao.POJO.Bus" alias="bus"/>
+  <!--    整个包所有类的类名，不区分大小写    -->
+  <package name="com.springboot.POJO"/>
 </typeAliases>
 ```
 

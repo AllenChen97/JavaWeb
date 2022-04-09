@@ -30,5 +30,7 @@
     <update id="updateBus"  parameterType="com.dao.POJO.Bus">
         update c0094835.Bus set length=#{length} where type=#{type}
     </update>
+
+
 </mapper>
 

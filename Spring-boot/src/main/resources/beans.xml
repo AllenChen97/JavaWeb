@@ -7,6 +7,7 @@
         <property name="name" value="allen"/>
         <property name="age" value="18"/>
     </bean>
+
     <bean id="hehe" class="com.springboot.bean.Pet">
         <property name="name" value="tom"/>
     </bean>

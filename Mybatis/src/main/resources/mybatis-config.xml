@@ -14,7 +14,7 @@
     <typeAliases>
         <typeAlias type="com.dao.POJO.Bus" alias="bus"/>
         <!--    整个包所有类的类名，不区分大小写    -->
-        <package name="com.dao.POJO"/>
+        <package name="com.springboot.POJO"/>
     </typeAliases>
 
 
@@ -32,8 +32,8 @@
 
     <!--  记得注册mappers  -->
     <mappers>
-<!--        <mapper class="com.dao.mapper.BusMapper.xml"/>-->
-        <package name="com.dao.mapper"/>
+<!--        <mapper class="com.springboot.mapper.BusMapper.xml"/>-->
+        <package name="com.springboot.mapper"/>
     </mappers>
 
 </configuration>
