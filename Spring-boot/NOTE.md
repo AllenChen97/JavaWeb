@@ -1,6 +1,6 @@
-# Spring boot
+# [Spring boot](https://www.bilibili.com/video/BV19K4y1L7MT?spm_id_from=333.999.0.0)
 
-## 1. Hello World
+## 1. Hello World (基础)
 
 ### 1.1. 主程序
 ```java
@@ -111,7 +111,7 @@ public class HelloController {
 - 最终都会映射到MultiProperties上
 
 
-## 3. Service层注解
+## 3. Service层注解 (基础)
 
 ### 3.1. @Configuration配置类 (重要)
 - proxyBeanMethod默认是Full模式，配置类Config下面的所有方法调用多次只会得出一个对象(如上代码)
@@ -216,7 +216,7 @@ public class HelloController {
 ### 4.3. yaml配置文件
 
 
-## 5. Web场景
+## 5. Web场景 (重要)
 
 ### 5.1. 静态资源
 #### 5.1.1. 路径
@@ -248,9 +248,11 @@ spring:
 ### 5.2. 
 
 
-## 6. 数据访问
+## 6. 数据访问 (重要)
 
-### 6.1. 依赖导入
+### 6.1. JdbcTemplate使用
+
+#### 6.1.1. 依赖导入
 - 见附录1
 
 - 如果想指定数据库的版本，除了依赖里面写version标签，可以在properties中指定
@@ -260,7 +262,7 @@ spring:
     </properties>
 ```
 
-### 6.2. 配置设置
+##### 6.1.2. 配置设置
 ```yaml
 spring:
   datasource:
@@ -274,21 +276,7 @@ spring:
       query-timeout: 1000
 ```
 
-### 6.2. 源码分析
-- DataSourceAutoConfiguration: 数据源自动配置
-    - 数据源的相关配置在 Spring.datasource
-    - 数据库连接池的配置，是IOC没有DataSource配置才自动配置
-    - 底层给我们配好的连接池是HikariDataSource
-
-- DataSourceTransactionManagerAutoConfiguration: 事务管理自动配置
-
-- JdbcTemplateAutoConfiguration: JdbcTemplate自动配置，CRUD
-
-- JndiDataSourceAutoConfiguration: Jndi
-
-- XADataSourceAutoConfiguration: 分布式事务相关
-
-### 6.3. 测试使用JdbcTemplate
+#### 6.1.3. 测试
 ```java
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -306,9 +294,23 @@ public class myTest {
 }
 ```
 
-### 6.4. Druid数据源
+#### 6.1.4. 源码分析
+- DataSourceAutoConfiguration: 数据源自动配置
+  - 数据源的相关配置在 Spring.datasource
+  - 数据库连接池的配置，是IOC没有DataSource配置才自动配置
+  - 底层给我们配好的连接池是HikariDataSource
 
-#### 6.4.1. 方法一：自定义数据源
+- DataSourceTransactionManagerAutoConfiguration: 事务管理自动配置
+
+- JdbcTemplateAutoConfiguration: JdbcTemplate自动配置，CRUD
+
+- JndiDataSourceAutoConfiguration: Jndi
+
+- XADataSourceAutoConfiguration: 分布式事务相关
+
+### 6.2. Druid数据源
+
+#### 6.2.1. 方法一：自定义数据源
 ```java
 @Configuration
 public class DataSourceConfig {
@@ -353,7 +355,7 @@ public class DataSourceConfig {
 }
 ```
 
-#### 6.4.2. 方法二：用starter
+#### 6.2.2. 方法二：用starter
 - 引入依赖后 由spring.datasource.druid 配置拓展
 - web监控和sql监控、防火墙等功能默认开启
 
@@ -387,9 +389,9 @@ public class DataSourceConfig {
             delete-allow: false # 防火墙：不允许撒谎才能胡操作
 ```
 
-### 6.5. Mybatis整合
+### 6.3. Mybatis整合 (重要)
 
-#### 6.5.1. Mybatis 配置
+#### 6.3.1. Mybatis 配置
 ```yaml
 # Mybatis配置
 mybatis:
@@ -397,7 +399,7 @@ mybatis:
   mapper-locations: classpath:Mybatis/mapper/*.xml
 ```
 
-#### 6.5.2. Dao Preparation
+#### 6.3.2. Dao Preparation (重要)
 - POJO
 ```java
 @Data
@@ -411,7 +413,7 @@ public class Bus {
 
 ```
 
-- Mapper Interface
+- @Mapper 标记Mapper Interface
 ```java
 @Mapper
 public interface BusMapper {
@@ -459,7 +461,9 @@ public interface BusMapper {
 </mapper>
 ```
 
-#### 6.5.3. Service
+#### 6.3.3. Service
+- 自动装备Mapper进行操作，实现业务逻辑
+- 更好的实践应该是由Impl类来实现Service接口，接口中只定义方法和参数
 ```java
 @Service
 public class BusService {
@@ -475,7 +479,7 @@ public class BusService {
 }
 ```
 
-#### 6.5.4. Controller
+#### 6.3.4. Controller
 ```java
     //    @RequestMapping("/bus")
     @ResponseBody
@@ -487,8 +491,9 @@ public class BusService {
     }
 ```
 
-### 6.6. Mybatis 注解方法
-### 6.6.1. Mapper接口中的CRUD注解
+#### 6.3.5. Mybatis 注解方法 (好用推荐)
+
+- Mapper接口中的CRUD注解
 ```java
 @Mapper
 public interface BusMapper {
@@ -497,21 +502,26 @@ public interface BusMapper {
     Bus getBusbyType2(String type);
 }
 ```
-
-### 6.6.2. Mapper扫描器
 - 写上@MapperScan("com.springboot.mapper")，接口就不用标识@Mapper了，二选一
 
-### 6.6.3. Mybatis-plus
+### 6.4. Mybatis-plus (进阶用法，语法插件)
 - 添加依赖后,有 Mybatis-plus 配置
+
+#### 6.4.1. BaseMapper
 - 继承BaseMapper后，基础的CRUD方法就注入到Mapper里面了
+- 貌似在底层已经添加@MapperScan 扫描mapper包下面的所有.xml文件
+
 ```java
 @Mapper
-public interface BusMapper  extends BaseMapper<Bus> {
-    
+public interface BusMapper extends BaseMapper<Bus> {
+    //使用待补充学习、测试
 }
 ```
 
-- 如果表名和POJO对像名不一致，可以指定@TableName
+#### 6.4.2. 继承Sevice 和 Impl
+
+
+- 补充：如果表名和POJO对像名不一致，可以指定@TableName
 ```java
 @Data
 @AllArgsConstructor
@@ -524,9 +534,149 @@ public class Bus {
 }
 ```
 
+### 6.5. Redis (中间件整合)
+
+#### 6.5.1. 导入依赖配置链接
+- 依赖见附录1
+```yaml
+
+```
+
 
 ## 7. 单元测试及指标监控
 
+### 7.1. 常用注解
+- @Displayname(""): 单元测试展示名称
+- @BeforeEach, @AfterEach: 在每个单元测试结束前/后运行
+- @BeforeAll, @AfterAll: 在所有单元测试结束前/后运行
+- @Disabled: 标记该单元不测试
+- @Timeout(value = 500, unit = TimeUnit.MILLISECONDS): 超时
+- @RepeatedTest(5): 重复测试5次
+
+### 7.2. 断言Assertion
+- Assertion报错下面的代码就不执行
+- 类型: assertSame(), assertNotSame()
+- 值: assertEquals(), assertNotEquals()
+- Boolean: assertTrue(), assertFalse()
+- Null: assertNull(), assertNotNull()
+- 数组: assertArrayEquals()  
+
+
+- 组合断言
+```java
+assertAll("test", 
+        ()-> assertTrue(true && true, msg), 
+        ()->assertEquals(1, 1, msg));
+```
+
+- 异常断言
+```java
+
+assertThrows(Exception.class,()->{
+    int i = 10/0;
+    }, msg);
+```
+- fail
+```java
+if("条件"){
+    fail("测试失败");
+}
+```
+
+### 7.3. 前置条件Assumption
+- Assumption报错下面的代码继续执行
+```java
+Assumtions.assumeTrue(boolean, msg)
+```
+
+### 7.4. @Nest嵌套测试
+
+### 7.5. @ParmeterizedTest参数化测试
+- 逐个作为参数传入测试： @ValueSource(ints = {1,2,3,4,5})，数据还可以来自文档、枚举、方法等
+- @MethodSource("方法名")
+
+
+## 8. 指标监控
+
+### 8.1. 开启监控
+- 依赖见附录1
+- http://localhost:8080/actuator/
+
+#### 8.1.1. 配置
+```yaml
+# 指标监控
+management:
+  endpoints:
+    enabled-by-default: true  # 默认暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  # 以web的当时暴露
+```
+
+#### 8.1.2. endpoint
+- health 健康状态: 常用于云平台的应用健康管理和自愈功能
+- 很多健康检查都已经配置好，像数据库、Redis等
+```yaml
+management:
+  endpoint:
+    health:
+      show-details: always
+```
+- metrics 指标  
+可以主动推送或被动获取，对接多个监控系统，还可以自定义
+
+- info 信息
+- conditions
+- configprops
+- env 环境
+- loggers 日志
+
+#### 8.1.3. 自定义
+- 第79集
+
+#### 8.1.4. admin可视化
+- 引入依赖
+- 服务端
+```xml
+<dependency>
+    <groupId>de.codecentric</groupId>
+    <artifactId>spring-boot-admin-starter-server</artifactId>
+    <version>2.3.1</version>
+</dependency> 
+```
+- 客户端
+```xml
+<dependency>
+    <groupId>de.codecentric</groupId>
+    <artifactId>spring-boot-admin-starter-client</artifactId>
+    <version>2.3.1</version>
+</dependency> 
+```
+- 客户端配置
+```yaml
+# 指标监控
+spring:
+  boot:
+  admin:
+    client:
+      url: http://localhost:8888
+      instance:
+        prefered-ip: true
+
+  application:
+    name: boot-web-admin
+    
+management:
+  endpoints:
+    enabled-by-default: true  # 默认暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  # 以web的当时暴露
+  endpoint:
+    health:
+      show-details: always
+```
+[打开](http://localhost:8888): 就能看到所有应用的健康状况，内存占用等情况
 
 
 
@@ -570,23 +720,35 @@ public class Bus {
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
         </dependency>
 
+        <!--    mybatis-plus 里面有导入    -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jdbc</artifactId>-->
+        <!--        </dependency>-->
+
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!--    mybatis-plus 里面有导入    -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mybatis.spring.boot</groupId>-->
+        <!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
+        <!--            <version>1.0.0</version>-->
+        <!--        </dependency>-->
+
+        <dependency>
+          <groupId>com.baomidou</groupId>
+          <artifactId>mybatis-plus-boot-starter</artifactId>
+          <version>3.4.1</version>
         </dependency>
 
         <dependency>
-          <groupId>com.alibaba</groupId>
-          <artifactId>druid</artifactId>
-          <version>1.1.17</version>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        <dependency>
-          <groupId>com.alibaba</groupId>
-          <artifactId>druid-spring-boot-starter</artifactId>
-          <version>1.1.17</version>
-        </dependency>
-        
     <build>
         <plugins>
             <plugin>

@@ -5,10 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 //@Import({Person.class,Pet.class})   // 会额外导入一个以全类名命名的组件
+
 @SpringBootApplication
 //@SpringBootConfiguration  //  表明该类为配置类
 //@EnableAutoConfiguration  //  让Config生效
 //@ComponentScan            //  组件扫描，可以指定路径
+
 public class Hello {
 
     public static void main(String[] args) {

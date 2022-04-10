@@ -56,11 +56,25 @@ spring:
           config:
             delete-allow: false # 防火墙：不允许撒谎才能胡操作
 
+#  redis:
+#    url:
 
-  # 还可以配置查询相关的配置，例如下面查询超时
+# 还可以配置查询相关的配置，例如下面查询超时
 #  jdbc:
 #    template:
-#      query-timeout: 1000
+#      query-timeout: 3
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:8888
+        instance:
+          prefered-ip: true
+
+  application:
+    name: boot-web-admin
+
+
 
 # Mybatis配置
 mybatis:
@@ -69,3 +83,14 @@ mybatis:
 #  所有的配置都在configuration里面，跟上面config-location 只能存在一个，否则报错
   configuration:
     map-underscore-to-camel-case: true
+
+# 指标监控
+management:
+  endpoints:
+    enabled-by-default: true  # 默认暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  # 以web的当时暴露
+  endpoint:
+    health:
+      show-details: always
