@@ -30,8 +30,10 @@ public class HelloController {
         return "Hello Springboot!!";
     }
 
-    @RequestMapping("/pet")
-    public Pet petProperties(){
+//    @RequestMapping("/pet")
+    @ResponseBody
+    @GetMapping("/pet")
+    public Pet pet(){
         return pet;
     }
 

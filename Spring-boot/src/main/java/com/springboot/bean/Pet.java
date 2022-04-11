@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 @ToString           //  toString方法
 @Data               //  getters and setters
 @EqualsAndHashCode  //  equal重写
-
 @Component
 @ConfigurationProperties( prefix = "pet")   // 只能在容器中的组件中使用
 public class Pet {

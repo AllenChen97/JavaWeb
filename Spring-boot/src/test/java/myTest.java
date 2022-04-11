@@ -1,4 +1,5 @@
 import com.springboot.Hello;
+import com.springboot.bean.Pet;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,5 +30,14 @@ public class myTest {
 
         log.info("数据源类型： " + dataSource.getClass());
         log.info("记录总数： " + size);
+    }
+
+
+    @Autowired
+    Pet pet;
+
+    @Test
+    public void testPet(){
+        System.out.println(pet);
     }
 }

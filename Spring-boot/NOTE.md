@@ -45,10 +45,12 @@ public class HelloController {
 - resources/application.properties
 
 
-## 2. 自动配置原理 (源码)
+## 2. 自动配置 和 Springboot启动原理 (源码)
 - 自动配置都在spring-boot-autoconfigure
 
-### 2.1. 自动版本仲裁
+### 2.1. 自动配置
+
+#### 2.1.1. 自动版本仲裁
 ```xml
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -63,7 +65,7 @@ public class HelloController {
 </properties>
 ```
 
-### 2.2. 依赖导入场景化
+#### 2.1.2. 依赖导入场景化
 ```xml
     <dependencies>
         <dependency>
@@ -75,7 +77,7 @@ public class HelloController {
 - starter-xx 会按场景把大多数所需要用到的依赖统一导入，有mq cache jdbc等场景
 - 所有场景底层都会依赖Spring-boot-starter
 
-### 2.3. 自动组件、功能装配
+#### 2.1.3. 自动组件、功能装配
 - @SpringBootApplication 由三个子注释组成
 ```java
 @SpringBootConfiguration
@@ -83,15 +85,15 @@ public class HelloController {
 @ComponentScan
 ```
 
-#### 2.3.1.@SpringBootConfiguration
+##### 2.1.3.1.@SpringBootConfiguration
 - 说明注释的主体是配置类
 
 
-#### 2.3.2.@EnableAutoConfiguration（了解）
+##### 2.1.3.2.@EnableAutoConfiguration（了解）
 - 利用Register给容器导入一系列组件
 - 将指定包下的所有组件导入到main所在的包下
 
-##### 2.3.2.1.@Import(AutoConfigurationImportSelector.class)
+###### 2.1.3.2.1.@Import(AutoConfigurationImportSelector.class)
 - 利用AutoConfigurationImportSelector 给容器导入一些组件
 - 用 getCandidateConfigurations 获取所有需要导入的配置类
 - 扫描所有配置类，loadSpringFactories 加载工厂 得到所有组件
@@ -99,7 +101,7 @@ public class HelloController {
 - 例如spring-boot-autoconfigure的包指定**自动加载的127个类**，Springboot已启动就要给容器加载的所有配置类
 - 配置类很多下面都有 **@ConditionOnClass 控制最终按需加载**
 
-### 2.4. 自动包路径扫描
+#### 2.1.4. 自动包路径扫描
 - 主程序下面的包全部都会扫描到
 - 如果实在需要扫描主程序所在包以外的组件，在主程序如下配置
 ```java
@@ -107,8 +109,61 @@ public class HelloController {
 // 或者 @ComponentScan("com")
 ```
 
-### 2.5. 配置拥有默认值
+#### 2.1.5. 配置拥有默认值
 - 最终都会映射到MultiProperties上
+
+
+### 2.2. Springboot启动原理
+- SpringApplication.run()
+
+#### 2.2.1. SpringApplication
+读取、保存一些组件：
+- web应用的类型: 响应式编程还是原生servlet编程
+  - 去spring.factories 找自动配置，创建实例返回到程序中
+    - bootstrapper: 找初始启动引导器 存放在 bootstrappers
+    - ApplicationContextInitializer: 找 initializers
+    - ApplicationListener: 找监听器 listeners
+
+#### 2.2.2. run  
+
+----
+1. 基础准备
+   - 创建一个StopWatch对象，并调用start()方法
+   - 记录应用启动时间
+   - 创建引导上下文 createBootstrapperContext()
+     - 获取之前存放在 bootstrappers，逐个调用initialize() 完成bootstrapper的上下文配置
+   - 让当前应用进入headless模式， java.awt.headless
+----
+2. 监听器准备及运行
+   - 获取所有 运行时监听器RunListeners(args)，并保存
+     - 去spring.factories 找SpringApplicationRunListener.class
+     - 调用所有listener的starting方法
+----
+3. 配置读取准备环境
+   - 保存命令行参数
+   - 准备环境内容prepareEnvironment
+     - 如果没有环境，就创建一个，servlet应用的就返回一个 StanderServletEnvironment
+     - 并进行配置,读取所有的配置参数
+   - 监听器调用 environmentPrepared(),通知所有监听器 当前环境已准备完成
+----
+4. 开启IOC容器创建所有组件
+   - 重要：调用prepareContext() 创建IOC容器ApplicationContext
+     - 保存环境信息
+     - applyInitializers 应用初始化器
+       - 遍历 initializers 对IOC容器进行初始化拓展功能
+       - 遍历调用 listeners.contextPrepared()，通知所有监听器Context已经准备好
+       - listeners.ContextLoaded()，通知所有监听器Context已加载完成
+   - 刷新IOC容器refresh() 实例化容器中的所有组件
+   - afterRefresh
+   - 遍历调用 listeners.started(context)，通知所有监听器Context已启动
+----
+5. 运行程序
+   - 调用所有的runners
+     - 获取容器中的applicationRunner 和 CommandRunner, 合并并排序
+   - 如果上面有异常则调用listener.failed()
+   - 遍历调用listener.running(context)
+   - 如果running有异常则调用listener.failed()
+
 
 
 ## 3. Service层注解 (基础)
@@ -679,6 +734,52 @@ management:
 [打开](http://localhost:8888): 就能看到所有应用的健康状况，内存占用等情况
 
 
+## 9. 高级特性
+
+### 9.1. 测试/生产环境切换
+
+#### 9.1.1. 配置文件
+- 如果像以下设置为生产环境，则读取 application-prod.yaml，则是环境则为 application-test.yaml
+- 如果默认文件和环境下的配置文件发生冲突，以环境配置文件为准
+```yaml
+spring.profiles.active=prod # test
+```
+
+#### 9.1.2. 部署
+- 选择生产化境部署
+```shell
+java -jar xx.jar --spring.profiles.active=prod
+```
+
+#### 9.1.3. 代码注释 @Profile("test")
+-在POJO或者配置类前面加 @Profile("test")，则在测试环境才生效
+
+#### 9.1.4. 分组-批量加载配置文件
+```yaml
+# 会把 application-prod.yaml 和 application-ppd.yaml 都加载进来
+spring.profiles.active=myprod 
+
+spring.profiles.group.myprod[0]=ppd
+spring.profiles.group.myprod[1]=prod
+
+spring.profiles.group.mytest[0]=test
+```
+
+### 9.2. 外部化配置
+- ${PATH} 获取环境变量  
+
+配置文件查找位置，越下面的配置文件优先级越高  
+1. classpath 根路径
+2. classpath 根路径下的config目录
+3. jar包当前目录
+4. jar包当前目录下的config目录
+4. /config 子目录的直接子目录
+
+配置文件加载顺序，越下面的配置文件优先级越高  
+1. jar包内部的默认配置文件 application.yaml
+2. jar包内部的环境配置文件 application-prod.yaml
+3. jar包外部的默认配置文件 application.yaml
+4. jar包外部的环境配置文件 application-prod.yaml
 
 
 ## 附录：
