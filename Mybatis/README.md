@@ -1,4 +1,3 @@
-
 # 一、 Mybatis 原装使用
 1. Mybatis 配置 
 2. 创建**POJO** 用于传入参数 和 接收查询结果  
@@ -256,10 +255,45 @@ lombok 注解开发，自动创建构造方法个getters and setters
    1. RedisCache implement Cache # https://zhuanlan.zhihu.com/p/27726873
    2. mapper 命名空间内 加上 <cache type="org.allen.mybatis.util.RedisCache"/>
 
+## 3. 运行原理
+1. 获取sqlSessionFactory: new sqlSessionFactoryBuilder().build(inputStream) 
+   1. XMLConfigBuilder 用settingsElement **解析 配置文件**(mybatis-config.xml)，放在 **configuration**
+   2. XMLConfigBuilder 用parseStatementNode **解析 mappers** 的所有CRUD，封装成 MappedStatement，放在 **configuration**
+   3. 创建一个DefaultSqlSession(), **包含 configuration**
 
-    
-## 3. 备注
+2. 获取sqlSession: sqlSessionFactory.openSession()
+   1. 从configuration 中获取配置信息，创建tx 和 Executor (有三种ExecutorType 默认Simple)，如果有配置二级缓存就用封装过的CacheExecutor
+   2. 如果有配置拦截器插件，使用拦截器重新包装Executor 并返回
+   3. 创建一个DefaultSqlSession, **包含 configuration and executor**
+
+3. 获取接口代理对象 (proxyMapper)
+   1. DefaultSqlSession --> 调用getMapper(xxx.class) 去 configuration 的 mapperRegistry 里面找该 Mapper
+   2. knowsMappers 里面, 根据接口类型 xxx.class 找到对应的 mapperProxyFactory
+   3. mapperProxyFactory.newInstance(sqlSession) 创建返回 **mapperProxy** 代理对象
+
+4. 执行CRUD
+   1. 调用 DefaultSqlSession 里面的 **executor**
+      1. 调用 MapperMethod.execute(sqlsession, args)
+      2. 里面先 判断增删改查类型
+      4. 执行 sqlSession.selectOne() --> sqlSession.selectList() 返回第一个
+      5. 其中 需要获取 MapperStatement 并丢到 executor.query() 里面
+      6. 获取boundSql，里面包含了SQL、参数、参数类型等各种信息
+      7. 看二级、一级缓存是否有结果，如果都没有就调用doQuery()方法真正去查询，里面调用的还是jdbc的方法
+   2. 根据 statementType 创建 **StatementHandler** 对象，用于增删改查
+   3. 创建 **ParameterHandler** 使用 TypeHandler 对参数进行预编译
+   5. 创建 **ResultSetHandler** 处理查询结果
+   6. 如果缓存中没有数据，查完数据还会把数据放到缓存中
+   7. 链接关闭
+
+## 3. 运行原理总结
+1. 获取 sqlSessionFactory 就是编译配置文件 和 MappedStatement，如果 xml 文件写错了可能在这里编译失败
+2. 打开 sqlSession 相当于是根据配置的 ExecutorType 生成 executor
+3. 根据接口类型 xxx.class 获取 mapperProxy 里面包含 DefaultSqlSession 里面包含 executor
+4. 代理对象 mapperProxy 调用 DefaultSqlSession 里面的增删改查
+
+## 5. 备注
 1. 先查二级缓存，再查一级缓存
+
 
 # 三、 Spring整合  
 - [概念图-Visio](https://newcastle-my.sharepoint.com/:u:/g/personal/c0094835_newcastle_ac_uk/Ebcs8dD09OpBq3bH6l3bK78Bxir1kf2iTt3sOklOk5EkQQ?e=2NUchf)
