@@ -1,10 +1,5 @@
-#Person:
-#  name: Allen
-#  pet:
-#    name: Yoyo
-#  age: 18
-
-
+pet:
+  name: PropertiesTest
 
 spring:
 #  1.Web场景
@@ -12,21 +7,33 @@ spring:
     #  static-path-pattern加了之后，访问 http://ip:port/res/ 的都是对静态资源的访问
     #  即使handler就不会拦截到该请求
     static-path-pattern: /res/**
-
+    pathmatch:
+      matching-strategy: ant_path_matcher
     #  static-locations加了之后，只有/haha 文件夹下面的静态资源能访问
     #  可以在列表配置中多个
+
   resources:
     static-locations: [classpath:/haha]
 
     #  如果改成false所有静态资源都访问不了
     add-mappings: true
 
-
-#  2.数据场景
+#  2. 数据库
   datasource:
-    url: jdbc:mysql://cs-db.ncl.ac.uk:3306
-    username: c0094835
-    password: 541236987s
+    url: jdbc:mysql://52.56.61.243:3306/project
+    username: root
+    password: 541236987sS_
+    hikari:
+      connection-test-query: SELECT 1 FROM project.sysuser
+      connection-timeout: 10000  # database connection
+      validation-timeout: 10000  # database validation
+      login-timeout: 10000       # login
+
+      maximum-pool-size: 500
+
+      # thread aren't working
+      minimum-idle: 10
+      idle-timeout: 60000
 
     filters: stat,wall
     max-active: 10
@@ -35,8 +42,8 @@ spring:
       filters: stat,wall
       stat-view-servlet:
         enabled: true
-        login-username: admin
-        login-password: 541236987s
+#        login-username: admin
+#        login-password: 541236987s
         reset-enable: false
 
       web-stat-filter:
@@ -54,37 +61,26 @@ spring:
         wall:
           enabled: true
           config:
-            delete-allow: false # 防火墙：不允许撒谎才能胡操作
+            delete-allow: false # 防火墙：不允许所有删除操作
 
-#  redis:
-#    url:
+#  3. Redis
+  redis:
+    host: 52.56.61.243
+    port: 6379
+    password: 541236987sS_
 
-# 还可以配置查询相关的配置，例如下面查询超时
-#  jdbc:
-#    template:
-#      query-timeout: 3
-
+# 4. 监控
   boot:
     admin:
       client:
-        url: http://localhost:8888
+        url: http://52.56.61.243:8021/
         instance:
           prefered-ip: true
 
   application:
-    name: boot-web-admin
+    name: springboot-application
 
-
-
-# Mybatis配置
-mybatis:
-#  config-location: classpath:Mybatis/mybatis-config.xml
-  mapper-locations: classpath:Mybatis/mapper/*.xml
-#  所有的配置都在configuration里面，跟上面config-location 只能存在一个，否则报错
-  configuration:
-    map-underscore-to-camel-case: true
-
-# 指标监控
+# 5. 指标监控
 management:
   endpoints:
     enabled-by-default: true  # 默认暴露所有端点信息
@@ -94,3 +90,12 @@ management:
   endpoint:
     health:
       show-details: always
+
+
+# 6. Mybatis配置
+mybatis:
+#  config-location: classpath:Mybatis/mybatis-config.xml
+  mapper-locations: classpath:Mybatis/mapper/*.xml
+#  所有的配置都在configuration里面，跟上面config-location 只能存在一个，否则报错
+  configuration:
+    map-underscore-to-camel-case: true

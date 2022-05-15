@@ -1,4 +1,5 @@
-import com.dao.mapper.BusMapper;
+import org.allen.mybatis.Dao.BusMapper;
+import org.allen.mybatis.Dao.DynamicMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -39,16 +40,26 @@ public class MybatisTest {
 //        BusMapperImpl busMapperImpl = context.getBean("busMapper", BusMapperImpl.class);
 
         // 方法二：
-        BusMapper busMapper = context.getBean("busMapper2", BusMapper.class);
+        BusMapper busDao = context.getBean("busMapper2", BusMapper.class);
 
-        System.out.println(busMapper.selectBus());
+        System.out.println(busDao.selectBus());
     }
 
     @Test
     public void transactionTest() throws IOException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        BusMapper busMapper = context.getBean("busMapper2", BusMapper.class);
+        BusMapper busDao = context.getBean("busMapper2", BusMapper.class);
 
-        busMapper.test();
+        busDao.test();
     }
+
+    @Test
+    public void DynamicSQLTest(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        DynamicMapper dynamicMapper = context.getBean("dynamicMapper", DynamicMapper.class);
+
+        System.out.println(dynamicMapper.getBusesByType("Dart"));
+    }
+
 }

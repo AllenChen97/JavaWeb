@@ -1,25 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration
+    <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
+<!--  https://mybatis.org/mybatis-3/configuration.html  -->
+<!--  configuration 是按顺序的，切勿自行掉乱  -->
 <configuration>
 
+    <!--    1. 引入dbc.properties 里的属性    -->
     <properties resource="jdbc.properties"/>
 
+    <!--     2. 设置!!     -->
     <settings>
+        <!--    日志    -->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--    缓存机制的全局开关    -->
+        <setting name="cacheEnabled" value="true"/>
+        <!--    开启时，所有关联对象都会延迟加载，特定关联关系可以通过fetchType属性来覆盖该配置    -->
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <!--    使用列标签代替列名    -->
+        <setting name="userColumnLabel" value="true"/>
+        <!--    超时时间，它决定等待数据库相应的秒数    -->
+        <setting name="defaultStatementTimeout" value="null"/>
+        <!--    开启驼峰命名规则：order_no ==> orderNo 是可以匹配的    -->
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
     </settings>
 
+    <!--     3. 给Java bean 起别名，之后在mapper等文件中直接使用别名: 建议依然使用全类名，可以在mapper中直接跳转     -->
     <typeAliases>
-        <typeAlias type="com.dao.POJO.Bus" alias="bus"/>
-        <!--    整个包所有类的类名，不区分大小写    -->
+        <!--    方式一：单独给一个类起别名    -->
+        <typeAlias type="org.allen.mybatis.POJO.Bus" alias="bus"/>
+        <!--    方式一：为整个包下的所有类，以类名作为别名，大小写不敏感。但多个包下有同样类名会发生冲突    -->
         <package name="com.springboot.POJO"/>
+        <!--    方式三：@Alias写在类上面，单独起别名    -->
+
+        <!--    Java类型别名: https://mybatis.org/mybatis-3/configuration.html#typeAliases    -->
     </typeAliases>
 
+    <!--     4. TypeHandler：自定义Java 类型和 数据库的类型转换      -->
 
+    <!--     5. objectFactory      -->
+
+    <!--     6. 插件plugin    -->
+    <!--        四大对象：EXECUTOR, ParameterHandler, ResultSetHandler, StatementHandler      -->
+
+    <!--     7. 数据库环境!!     -->
     <environments default="development">
+        <!--    每个environment就是一个数据库：必须包含 transactionManager 和 dataSource 两个东西  -->
+        <!--      id 是当前环境唯一标识，可以让应用快速切换成测试、开发、正式环境      -->
         <environment id="development">
+            <!--      transactionManager 事务管理器：JDBC - 写在Configuration里的别名      -->
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="${jdbc.driver}"/>
@@ -28,12 +58,25 @@
                 <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
+
     </environments>
 
-    <!--  记得注册mappers  -->
+    <!--     8. databaseldProvider 数据库厂商 别名      -->
+    <!--        用在mapper的 select 标签里面，表明SQL语句要用特别的厂商来执行，需要以该厂商的标准来编译    -->
+
+    <!--    9. 注册mappers!!    -->
     <mappers>
-<!--        <mapper class="com.springboot.mapper.BusMapper.xml"/>-->
-        <package name="com.springboot.mapper"/>
+        <!--    注册配置文件    -->
+        <!--    方式一：引用类路径下的SQL映射文件    -->
+<!--        <mapper resource="org/allen/mybatis/Dao/BusMapper.xml"/>-->
+        <!--    方式二：引用网络路径或磁盘路径    -->
+<!--        <mapper url="file:/resources/mappers/BusMapper.xml"/>-->
+
+        <!--    方式三：注册接口 (dao的全类名)：interface 和 xml文档 必须放在同一个包下面，且同名    -->
+<!--        <mapper class="org.allen.mybatis.Dao.DynamicMapper"/>-->
+        <!--    方式四：批量注册    -->
+        <package name="org.allen.mybatis.Dao"/>
     </mappers>
 
 </configuration>
+

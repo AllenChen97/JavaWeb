@@ -7,13 +7,16 @@
     <import resource="spring-dao.xml"/>
 
     <!--    Mapper  -->
-    <bean id="busMapper" class="com.dao.mapper.BusMapperImpl">
+    <bean id="busDao" class="org.allen.mybatis.Service.BusMapperImpl">
         <property name="sqlSession" ref="sqlSession"/>
     </bean>
 
-    <bean id="busMapper2" class="com.dao.mapper.BusMapperImpl2">
+    <bean id="busMapper2" class="org.allen.mybatis.Service.BusMapperImpl2">
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
+    <bean id="dynamicMapper" class="org.allen.mybatis.Service.DynamicMapperSQLImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
 
 </beans>
